@@ -1,0 +1,12 @@
+.row.text-center{ :style => "width: 90%;margin:10px;" }
+  .col-md-12.col-xs-12.col-sm-12.flash-container
+    - if flash[:notice]
+      .notice{ :style => "color: red;" }
+        = flash[:notice]
+  .col-md-12.col-xs-12.col-sm-12
+    %h4
+      Create a new Post
+    = form_for(@post, :url => post_create_path, html:{ method: :post, onsubmit: "return checkValidPost()"}) do |f|
+      = f.text_area :content, :style => "color: black;", :class => "post_area spl_text_area"
+      = f.submit "submit", :class => "btn", :id => "connect-btn", :style => "margin-top:3%; width:10%; float: right;"
+  

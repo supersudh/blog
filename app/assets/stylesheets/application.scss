@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (max-width:1024px) {
+  .container {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 15px;
+    padding-right: 45px;
+  }
+}
+.clear-padding{
+  padding: 0 !important; 
+}
+.top-header{
+  min-height: 70px;
+  padding-top: 0;
+  background: #fff;
+}
+.clear-box {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+@media (max-width: 768px) {
+  .clear-box {
+    margin: 0 !important;
+    padding: 0 15px !important;
+  }
+}
+@media (max-width: 480px) {
+	.clear-box {
+    margin: 0 !important;
+    padding: 0 15px !important;
+  }
+}  
+.default-button-home {
+  height: 44px;
+  border: 2px solid #147CE0;
+  background: #fff;
+  border-radius: 4px;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: 20px;
+  color: #147CE0 !important;
+  padding: 0 10px;
+}
+.default-button-home:hover {
+  background: #147CE0;
+  border-color: #147CE0;
+  color: #fff !important;
+}
+#connect-btn {
+  background: #147ce0 !important;
+  border-radius: 4px;
+  color: #fff !important;
+  min-width: 208px;
+  text-align: center;
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+}
+.spl_text_area
+{
+  border: 1px solid grey;
+}
+.spl_text_area:hover
+{
+  border: 2px solid #147CE0;
+}
+
+.post-container
+{
+  border: 1px solid #147CE0;
+  margin-top: 5px;
+}
+.fa-search {
+  color: #147CE0;
+}
+#search-query
+{
+  height: 54px;
+  border: 0px solid #ccc; 
+  border-left: 0px; 
+  border-bottom-right-radius: 0px; 
+  border-bottom-left-radius: 0px; 
+  border-top-right-radius: 0px;  
+  border-bottom: 2px solid #147CE0; 
+  color: #444; 
+  width: 100%;
+}

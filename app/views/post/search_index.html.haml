@@ -1,0 +1,13 @@
+.frame
+  .row
+    %br/
+    %br/
+    .col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
+      .small_search#searchfield
+        .input-group.input-group-lg
+          %span.input-group-addon{ :style => "height: 54px; font-size: 20px; background: none; border-radius: 0px; border-bottom-right-radius: 0px; border: 0px solid #ccc; border-right: 0px; border-bottom: 2px solid #147CE0;" }
+            %i.fa.fa-search
+          %input#search-query.col-md-12.input-lg{ :placeholder => "Search here...", :type => "text" }
+  .row
+    .col-md-10.col-md-offset-1.col-xs-12.col-md-12
+      #search-results-container        

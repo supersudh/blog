@@ -1,0 +1,23 @@
+-#= link_to "Posts", post_index_path
+.container.clear-padding
+  .top-header.row.clear-box
+    .col-md-12.col-sm-12.col-xs-12.clear-box
+      %div{ :style => "" }
+        %ul
+          %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px;" }            
+            = link_to "HOME", post_index_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
+          %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px; margin-left:10px;" }
+            = link_to "NEW POST", post_new_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
+          %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px; margin-left:10px;" }
+            = link_to "SEARCH POSTS", post_search_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
+          %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px; margin-left:10px;" }
+            = link_to "MY POSTS", post_old_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
+          %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px; margin-left:10px;" }
+            %h4{ :style => "color: #147ce0;" }
+              Welcome,
+              - unless @current_user.nil?
+                = @current_user.nickname
+                !
+          %li{ :style => "list-style-type: none; float: right; font-size: 18px;margin-top: 8px;" }
+            = link_to "LOGOUT", logout_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
+          

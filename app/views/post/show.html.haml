@@ -1,0 +1,36 @@
+.row
+  %br/
+  %br/
+  %br/
+  %br/
+  %br/
+  .col-md-10.col-md-offset-1.col-xs-12.col-md-12
+    #post
+      - unless @post.nil?
+        .nickname
+          = @post[0]["nickname"]
+        .time
+          = @post[0]["time"]
+        .post
+          = @post[0]["post"]
+        - unless @post[0]["comments"].empty?
+          %div
+            %a{ :href => "javascript:void(0)", :class => "view-comment"}Show Comments
+            %a{ :href => "javascript:void(0)", :class => "hide-comment", :style => "display: none;" }Hide Comments
+            %div{ :style => "display: none;", :class => "comment-container" }
+              - @post[0]["comments"].each do |c|
+                .comment-box
+                  .c-nickname
+                    = c["nickname"]
+                  .c-time
+                    = c["time"]
+                  .c-comment
+                    = c["comment"]
+        %div
+          %a{ :href => "javascript:void(0)", :class => "add-comment" }Add Comment
+        %div{ :class => "new-comment-container", :style => "display: none;"  }
+          %div
+            %span
+              %input{ :placeholder => "Enter your Comment here...", :class => "comment-text", :style => "color: black;" }
+            %span
+              %button{ :class => "submit-comment", "data-post-id" => @post[0]["id"], :style => "margin-left: 10px;" }Comment

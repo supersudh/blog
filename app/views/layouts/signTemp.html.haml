@@ -1,0 +1,62 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+    %title Sign-Up/Login Form
+    %link{:href => "http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600", :rel => "stylesheet", :type => "text/css"}/
+    / %script{:src => "http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"}
+    = stylesheet_link_tag    'normalize', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'signtemp', 'data-turbolinks-track' => true
+  %body
+    .form
+      %ul.tab-group
+        %li.su-tab.tab.active
+          %a{:href => "javascript:void(0);", :class => "su-tab-a"} Sign Up
+        %li.login-tab
+          %a{:href => "javascript:void(0);", :class => "login-tab-a"} Log In
+      .tab-content
+        #signup
+          - if flash[:notice]
+            .notice
+              = flash[:notice]
+          %h1 Sign Up to view awesome posts
+          = form_for(:user, :url => user_register_path, html:{ method: :post, onsubmit: "return checkRegister()"}) do |f|            
+            .field-wrap
+              %label
+                Email Address
+                %span.req *
+              = f.text_field :email, :autocomplete => "off", :type => "email", :class => "email-reg"
+            .field-wrap
+              %label
+                NickName
+                %span.req *
+              = f.text_field :nickname, :autocomplete => "off", :type => "text", :class => "nickname"
+            .top-row
+              .field-wrap
+                %label
+                  Password
+                  %span.req *
+                = f.text_field :password, :autocomplete => "off", :type => "password", :class => "pass-reg"
+              .field-wrap
+                %label
+                  Confirm Password
+                  %span.req *
+                = f.text_field :password_confirmation, :autocomplete => "off", :type => "password", :class => "cpass-reg"
+            = f.submit "REGISTER", :class=>"button button-block"
+        #login
+          %h1 Welcome Back!
+          = form_tag user_login_path do
+            .field-wrap
+              %label
+                Email Address
+                %span.req *
+              = text_field_tag 'email',nil, class: "email"
+            .field-wrap
+              %label
+                Password
+                %span.req *
+              = password_field_tag 'password',nil, class: "pass"
+            = submit_tag "LOGIN", :class=>"button button-block", :onclick => "return checkLogin()"
+    
