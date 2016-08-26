@@ -36,6 +36,6 @@ test:
 #
 production:
   <<: *default
-  database: d5uvc7fl3jujke
-  username: waasehbbkxiutf
-  password: RMmRhMd3LNdAe17s7imKWJs0Qr
+  database: blogapp_production
+  username: postgres
+  password: abcd1234
