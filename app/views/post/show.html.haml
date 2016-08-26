@@ -22,7 +22,7 @@
           %div
             %a{ :href => "javascript:void(0)", :class => "view-comment"}Show Comments
             %a{ :href => "javascript:void(0)", :class => "hide-comment", :style => "display: none;" }Hide Comments
-            %div{ :style => "color: #147CE0; display:none;", :class => "comments-header" }Comments:
+            %div{ :style => "color: grey; display:none;", :class => "comments-header" }Comments:
             %div{ :style => "display: none;", :class => "comment-container" }
               - @post[0]["comments"].each do |c|
                 .comment-box
@@ -36,7 +36,7 @@
           %div
             %a{ :href => "javascript:void(0)", :class => "view-comment view-comment", :style => "display: none;" }Show Comments
             %a{ :href => "javascript:void(0)", :class => "hide-comment hide-comment", :style => "display: none;" }Hide Comments
-            %div{ :style => "color: #147CE0; display:none;", :class => "comments-header" }Comments:
+            %div{ :style => "color: grey; display:none;", :class => "comments-header" }Comments:
             %div{ :style => "display: none;", :class => "comment-container" }            
         %div
           %a{ :href => "javascript:void(0)", :class => "add-comment", "data-child" => @post[0]["comments"].empty? ? "0" : "1" }Add Comment

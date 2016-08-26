@@ -23,7 +23,7 @@
               <br/>
               %a{ :href => "javascript:void(0)", :class => "view-comment view-comment"+(i+1).to_s, "data-id" => (i+1).to_s }Show Comments
               %a{ :href => "javascript:void(0)", :class => "hide-comment hide-comment"+(i+1).to_s, "data-id" => (i+1).to_s, :style => "display: none;" }Hide Comments
-              %div{ :style => "color: #147CE0; display:none;", :class => "comments-header"+(i+1).to_s }Comments:
+              %div{ :style => "color: #grey; display:none;", :class => "comments-header"+(i+1).to_s }Comments:
               %div{ :style => "display: none;", :class => "comment-container"+(i+1).to_s }
                 - t["comments"].each do |c|
                   .comment-box
@@ -39,7 +39,7 @@
               <br/>
               %a{ :href => "javascript:void(0)", :class => "view-comment view-comment"+(i+1).to_s, "data-id" => (i+1).to_s, :style => "display: none;" }Show Comments
               %a{ :href => "javascript:void(0)", :class => "hide-comment hide-comment"+(i+1).to_s, "data-id" => (i+1).to_s, :style => "display: none;" }Hide Comments
-              %div{ :style => "color: #147CE0; display:none;", :class => "comments-header"+(i+1).to_s }Comments:
+              %div{ :style => "color: grey; display:none;", :class => "comments-header"+(i+1).to_s }Comments:
               %div{ :style => "display: none;", :class => "comment-container"+(i+1).to_s }          
           %div
             %a{ :href => "javascript:void(0)", :class => "add-comment add-comment"+(i+1).to_s, "data-id" => (i+1).to_s, "data-child" => t["comments"].empty? ? "0" : "1" }Add Comment

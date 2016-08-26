@@ -5,9 +5,9 @@
         = flash[:notice]
   .col-md-12.col-xs-12.col-sm-12
     %h4
-      Create a new Post
+      Create a new Post (You can also upload multiple image files..)
     = form_for(@post, :url => post_create_path, html:{ multipart: true, method: :post, onsubmit: "return checkValidPost()"}) do |f|
-      = f.text_area :content, :style => "color: black;", :class => "post_area spl_text_area"
+      = f.text_area :content, :style => "color: black;", :class => "post_area spl_text_area", :rows => 10
       = file_field_tag 'images[]', :accept => 'image/jpeg', :multiple => true
       / = file_field_tag 'files[]', :accept => 'image/jpeg', :multiple => true
       / = file_field_tag 'files[]', :accept => 'image/jpeg', :multiple => true
