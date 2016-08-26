@@ -7,6 +7,11 @@
   .col-md-10.col-md-offset-1.col-xs-12.col-md-12
     #post
       - unless @post.nil?
+        - unless @post[0]["image"].empty?
+          .row
+            - @post[0]["image"].each_with_index do |img,i|
+              .col-md-4
+                = image_tag '/images/'+img["id"].to_s+'/'+img["image"], :style => "width:300px; height:300px;"
         .nickname
           = @post[0]["nickname"]
         .time
@@ -17,6 +22,7 @@
           %div
             %a{ :href => "javascript:void(0)", :class => "view-comment"}Show Comments
             %a{ :href => "javascript:void(0)", :class => "hide-comment", :style => "display: none;" }Hide Comments
+            %div{ :style => "color: #147CE0; display:none;", :class => "comments-header" }Comments:
             %div{ :style => "display: none;", :class => "comment-container" }
               - @post[0]["comments"].each do |c|
                 .comment-box
@@ -26,11 +32,17 @@
                     = c["time"]
                   .c-comment
                     = c["comment"]
+        - else
+          %div
+            %a{ :href => "javascript:void(0)", :class => "view-comment view-comment", :style => "display: none;" }Show Comments
+            %a{ :href => "javascript:void(0)", :class => "hide-comment hide-comment", :style => "display: none;" }Hide Comments
+            %div{ :style => "color: #147CE0; display:none;", :class => "comments-header" }Comments:
+            %div{ :style => "display: none;", :class => "comment-container" }            
         %div
-          %a{ :href => "javascript:void(0)", :class => "add-comment" }Add Comment
+          %a{ :href => "javascript:void(0)", :class => "add-comment", "data-child" => @post[0]["comments"].empty? ? "0" : "1" }Add Comment
         %div{ :class => "new-comment-container", :style => "display: none;"  }
           %div
             %span
-              %input{ :placeholder => "Enter your Comment here...", :class => "comment-text", :style => "color: black;" }
+              %input{ :placeholder => "Enter your Comment here...", :class => "comment-input-box comment-text", :style => "color: black;" }
             %span
               %button{ :class => "submit-comment", "data-post-id" => @post[0]["id"], :style => "margin-left: 10px;" }Comment

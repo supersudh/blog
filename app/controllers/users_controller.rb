@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 		session[:user_id] = user.id
 		redirect_to(post_index_path)
 	else
-		flash[:notice] = 'Invalid Email/Password'
+	  flash[:notice] = user.errors.messages[user.errors.messages.keys[0]][0]
 	  redirect_to(user_index_path)
 	end
 	end

@@ -12,6 +12,8 @@ class PostController < ApplicationController
 			temp_obj["post"] = t.content
 			d = DateTime.parse(t.created_at.to_s)
 			temp_obj["time"] = d.strftime('%H:%M:%S %a, %b, %Y')
+			# temp_obj["image"] = []
+			# t.image.map{ |img| temp_obj["image"].push(img) }
 			comment_arr = []
 			comms = Comment.order(created_at: :asc).where(post_id: t.id)
 			unless comms.nil?
@@ -34,8 +36,14 @@ class PostController < ApplicationController
 	end
 
 	def create
-		@post = @current_user.posts.build(post_params)
+    
+		@post = @current_user.posts.build(:content => params[:post][:content])
 		if @post.save
+			if params[:images]
+        params[:images].each { |image|
+          @post.pictures.create(image: image)
+        }
+      end
 			flash[:notice] = "Post successfully created"
 			redirect_to(post_index_path)
 		else
@@ -53,6 +61,13 @@ class PostController < ApplicationController
 		temp_obj["post"] = top.content
 		d = DateTime.parse(top.created_at.to_s)
 		temp_obj["time"] = d.strftime('%H:%M:%S %a, %b, %Y')
+		temp_obj["image"] = []
+		Picture.where(post_id: top.id).each do |img|
+			temp_img_obj = {}
+			temp_img_obj["id"] = img.id
+			temp_img_obj["image"] = img.image_file_name
+			temp_obj["image"].push(temp_img_obj)
+		end
 		comment_arr = []
 		comms = Comment.order(created_at: :asc).where(post_id: top.id)
 		unless comms.nil?
@@ -67,6 +82,8 @@ class PostController < ApplicationController
 	  end
 		temp_obj["comments"] = comment_arr
 		@post.push(temp_obj)
+		puts "***"
+		puts @post
   end
 
 	def edit
@@ -113,8 +130,8 @@ class PostController < ApplicationController
 		end	
 		render json: {"count":@result.length, "results":@result}
   end
-	private
-	def post_params
-		params.require(:post).permit(:content)
-	end
+	# private
+	# def post_params
+	# 	params.require(:post).permit(:content)
+	# end
 end

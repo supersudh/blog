@@ -64,6 +64,17 @@
   color: #147CE0 !important;
   padding: 0 10px;
 }
+.default-button-home-selected {
+  height: 44px;
+  border: 2px solid #147CE0;
+  background: #147CE0;
+  border-radius: 4px;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: 20px;
+  color: white !important;
+  padding: 0 10px;
+}
 .default-button-home:hover {
   background: #147CE0;
   border-color: #147CE0;
@@ -105,4 +116,13 @@
   border-bottom: 2px solid #147CE0; 
   color: #444; 
   width: 100%;
+}
+.comment-input-box
+{
+  border: 0;
+  border-bottom: 2px solid #147CE0;
+  width: 40%;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  margin-top:10px;
 }

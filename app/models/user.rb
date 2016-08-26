@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 	has_many :comments, through: :posts
   attr_accessor :password
   validates_presence_of :email, :nickname, :password
+  validates :email, uniqueness: { message: "Email already in use" }
+  validates :nickname, uniqueness: { message: "Nickname already in use" }
   before_save :create_encrypted_password
 	def self.authenticate(email="", password="")
     user = User.find_by_email(email)

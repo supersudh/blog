@@ -5,13 +5,11 @@
       %div{ :style => "" }
         %ul
           %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px;" }            
-            = link_to "HOME", post_index_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
+            = link_to "HOME", post_index_path, :class => "btn default-button-home hd-btn-home", :style => "padding-top: 5px;", method: :get
           %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px; margin-left:10px;" }
-            = link_to "NEW POST", post_new_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
+            = link_to "NEW POST", post_new_path, :class => "btn default-button-home hd-btn-new", :style => "padding-top: 5px;", method: :get
           %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px; margin-left:10px;" }
-            = link_to "SEARCH POSTS", post_search_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
-          %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px; margin-left:10px;" }
-            = link_to "MY POSTS", post_old_path, :class => "btn default-button-home", :style => "padding-top: 5px;", method: :get
+            = link_to "SEARCH POSTS", post_search_path, :class => "btn default-button-home hd-btn-search", :style => "padding-top: 5px;", method: :get
           %li{ :style => "list-style-type: none; float: left; font-size: 18px;margin-top: 8px; margin-left:10px;" }
             %h4{ :style => "color: #147ce0;" }
               Welcome,

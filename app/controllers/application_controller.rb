@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   	  @current_user = User.find(session[:user_id])
   	  return true
   	else
+  	  flash[:notice] = "Please Login First"	
   	  redirect_to(user_index_path)
   	end
   end

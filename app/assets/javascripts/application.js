@@ -27,10 +27,18 @@ function checkValidPost()
 $(function(){
   var id = "",post_id = "", comment = "",str = "";
   setTimeout(function(){$(".flash-container").hide();},3000);
+  if(window.location.pathname.indexOf("new-post") != -1)
+  {
+    $(".hd-btn-new").removeClass("default-button-home");
+    $(".hd-btn-new").addClass("default-button-home-selected");
+  }
   if(window.location.pathname.indexOf("all-posts") != -1)
   {
+    $(".hd-btn-home").removeClass("default-button-home");
+    $(".hd-btn-home").addClass("default-button-home-selected");
     $(".view-comment").click(function(){
     	id = $(this).attr("data-id");
+      $(".comments-header"+id).show();
     	$(".comment-container"+id).show();
     	$(".view-comment"+id).hide();
     	$(".hide-comment"+id).show();
@@ -38,6 +46,7 @@ $(function(){
 
     $(".hide-comment").click(function(){
     	id = $(this).attr("data-id");
+      $(".comments-header"+id).hide();
     	$(".comment-container"+id).hide();
     	$(".view-comment"+id).show();
     	$(".hide-comment"+id).hide();
@@ -45,6 +54,8 @@ $(function(){
 
     $(".add-comment").click(function(){
     	id = $(this).attr("data-id");
+      if( $(this).attr("data-child") != "0" )
+        $(".view-comment"+id).click();
     	$(".new-comment-container"+id).show();
     });
 
@@ -82,6 +93,8 @@ $(function(){
         	  	str += '</div>'
         	  	$(".comment-container"+id).append(str)
         	  	$(".comment-text"+id).val("");
+              $(".view-comment"+id).show();
+              $(".view-comment"+id).click();
         	  }
         	},
         	error: function(err)
@@ -94,6 +107,8 @@ $(function(){
   }
   if(window.location.pathname.indexOf("search-posts") != -1)
   {
+    $(".hd-btn-search").removeClass("default-button-home");
+    $(".hd-btn-search").addClass("default-button-home-selected");
     $("#search-query").keyup(function(){
       $("#search-results-container").html("");
       str = $(this).val();
@@ -116,7 +131,7 @@ $(function(){
                    str += t.nickname;
                   str += '</div>';
                   str += '<div class="c-post">';
-                   str += '<a href="/show-post/' +t.id+ '">' +t.post+ '</a>';
+                   str += '<a data-method="get" href="/show-post/' +t.id+ '">' +t.post+ '</a>';
                   str += '</div>';
                   str += '<div class="c-time">';
                    str += t.time;
@@ -125,6 +140,8 @@ $(function(){
                 $("#search-results-container").append(str);
               });  
             }
+            else
+              $("#search-results-container").append('<p style="color: red;">Zero Results</p>');
           },
           error: function(err)
           {
@@ -137,18 +154,22 @@ $(function(){
   if(window.location.pathname.indexOf("show-post") != -1)
   {
     $(".view-comment").click(function(){
+      $(".comments-header").show();
       $(".comment-container").show();
       $(".view-comment").hide();
       $(".hide-comment").show();
     });
 
     $(".hide-comment").click(function(){
+      $(".comments-header").hide();
       $(".comment-container").hide();
       $(".view-comment").show();
       $(".hide-comment").hide();
     });
 
     $(".add-comment").click(function(){
+      if( $(this).attr("data-child") != "0" )
+        $(".view-comment"+id).click();
       $(".new-comment-container").show();
     });
 
@@ -185,6 +206,8 @@ $(function(){
               str += '</div>';
               $(".comment-container").append(str)
               $(".comment-text").val("");
+              $(".view-comment").show();
+              $(".view-comment").click();
             }
           },
           error: function(err)

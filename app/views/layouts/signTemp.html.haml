@@ -18,10 +18,15 @@
           %a{:href => "javascript:void(0);", :class => "login-tab-a"} Log In
       .tab-content
         #signup
-          - if flash[:notice]
-            .notice
-              = flash[:notice]
-          %h1 Sign Up to view awesome posts
+          .greeting-block    
+            %h1 Sign Up to view awesome posts
+          .flash-container
+            - if flash[:notice]
+              :javascript
+                $(".greeting-block").hide();
+              .notice
+                %h1{ :style => "color: red;" }
+                  = flash[:notice] 
           = form_for(:user, :url => user_register_path, html:{ method: :post, onsubmit: "return checkRegister()"}) do |f|            
             .field-wrap
               %label
@@ -43,20 +48,29 @@
                 %label
                   Confirm Password
                   %span.req *
-                = f.text_field :password_confirmation, :autocomplete => "off", :type => "password", :class => "cpass-reg"
+                %input.cpass-reg{:autocomplete => "off", :type => "password"}/
             = f.submit "REGISTER", :class=>"button button-block"
         #login
-          %h1 Welcome Back!
+          .greeting-block
+            %h1 Welcome Back!
+          .flash-container
+            - if flash[:notice]
+              :javascript
+                $(".greeting-block").hide();
+              .notice
+                %h1{ :style => "color: red;" }
+                  = flash[:notice]  
           = form_tag user_login_path do
             .field-wrap
               %label
                 Email Address
                 %span.req *
-              = text_field_tag 'email',nil, class: "email"
+              = text_field_tag 'email',nil, class: "email", autocomplete: "off"
             .field-wrap
               %label
                 Password
                 %span.req *
               = password_field_tag 'password',nil, class: "pass"
             = submit_tag "LOGIN", :class=>"button button-block", :onclick => "return checkLogin()"
+  }
     

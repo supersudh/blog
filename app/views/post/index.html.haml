@@ -19,8 +19,11 @@
             = t["post"]
           - unless t["comments"].empty?
             %div
+              %a{ :href => "/show-post/"+t["id"].to_s, "data-method" => "get" }View Post
+              <br/>
               %a{ :href => "javascript:void(0)", :class => "view-comment view-comment"+(i+1).to_s, "data-id" => (i+1).to_s }Show Comments
               %a{ :href => "javascript:void(0)", :class => "hide-comment hide-comment"+(i+1).to_s, "data-id" => (i+1).to_s, :style => "display: none;" }Hide Comments
+              %div{ :style => "color: #147CE0; display:none;", :class => "comments-header"+(i+1).to_s }Comments:
               %div{ :style => "display: none;", :class => "comment-container"+(i+1).to_s }
                 - t["comments"].each do |c|
                   .comment-box
@@ -30,12 +33,20 @@
                       = c["time"]
                     .c-comment
                       = c["comment"]
+          - else
+            %div
+              %a{ :href => "/show-post/"+t["id"].to_s, "data-method" => "get" }View Post
+              <br/>
+              %a{ :href => "javascript:void(0)", :class => "view-comment view-comment"+(i+1).to_s, "data-id" => (i+1).to_s, :style => "display: none;" }Show Comments
+              %a{ :href => "javascript:void(0)", :class => "hide-comment hide-comment"+(i+1).to_s, "data-id" => (i+1).to_s, :style => "display: none;" }Hide Comments
+              %div{ :style => "color: #147CE0; display:none;", :class => "comments-header"+(i+1).to_s }Comments:
+              %div{ :style => "display: none;", :class => "comment-container"+(i+1).to_s }          
           %div
-            %a{ :href => "javascript:void(0)", :class => "add-comment add-comment"+(i+1).to_s, "data-id" => (i+1).to_s }Add Comment
+            %a{ :href => "javascript:void(0)", :class => "add-comment add-comment"+(i+1).to_s, "data-id" => (i+1).to_s, "data-child" => t["comments"].empty? ? "0" : "1" }Add Comment
           %div{ :class => "new-comment-container"+(i+1).to_s, :style => "display: none;"  }
             %div
               %span
-                %input{ :placeholder => "Enter your Comment here...", :class => "comment-text"+(i+1).to_s, :style => "color: black;" }
+                %input{ :placeholder => "Enter your Comment here...", :class => "comment-input-box comment-text"+(i+1).to_s, :style => "color: black;" }
               %span
                 %button{ :class => "submit-comment", "data-post-id" => t["id"], "data-id" => (i+1).to_s, :style => "margin-left: 10px;" }Comment  
   
