@@ -11,7 +11,7 @@
           .row
             - @post[0]["image"].each_with_index do |img,i|
               .col-md-4
-                = image_tag img["id"].to_s+'/'+img["image"], :style => "width:300px; height:300px;"        
+                = image_tag '/images/'+img["id"].to_s+'/'+img["image"], :style => "width:300px; height:300px;"        
         %span{ :style => "font-style: italic;" }
           Posted by
         %span.nickname
